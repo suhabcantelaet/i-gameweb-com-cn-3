@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 - 发现你的游戏日常</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f3f0;
+            color: #2c2b28;
+            line-height: 1.7;
+        }
+
+        /* ——— 深色头图 ——— */
+        .hero {
+            background: #1b1a18;
+            color: #e8e4db;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, #f5f3f0);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.6rem;
+            color: #f0ebe3;
+        }
+
+        .hero p {
+            max-width: 660px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #b8b2a8;
+            font-weight: 300;
+        }
+
+        .hero .sub {
+            margin-top: 1.4rem;
+            font-size: 0.95rem;
+            color: #8f897e;
+            border-top: 1px solid #3a3732;
+            padding-top: 1.4rem;
+            display: inline-block;
+        }
+
+        /* ——— 浅色正文区 ——— */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 3.5rem;
+        }
+
+        /* 信息卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem 1.6rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #1f1d1a;
+            letter-spacing: 0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #c94130;
+            border-radius: 50%;
+            margin-right: 0.2rem;
+        }
+
+        .card p, .card ul {
+            font-size: 0.98rem;
+            color: #4a4742;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+
+        .card li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.4rem;
+        }
+
+        .card li::before {
+            content: '·';
+            position: absolute;
+            left: 0.2rem;
+            color: #c94130;
+            font-weight: 700;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #c94130;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        a:hover {
+            border-bottom-color: #c94130;
+        }
+
+        /* 自然链接段落 */
+        .link-paragraph {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem 2rem 2rem 2.2rem;
+            margin: 1.2rem 0 2.5rem;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+            border-left: 5px solid #c94130;
+            font-size: 1.02rem;
+        }
+
+        .link-paragraph p {
+            margin-bottom: 0.8rem;
+        }
+
+        .link-paragraph p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 提示 / FAQ 摘要 */
+        .faq-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .faq-item {
+            background: #fff;
+            padding: 1.4rem 1.6rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .faq-item h4 {
+            font-weight: 500;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+            color: #1f1d1a;
+        }
+
+        .faq-item p {
+            font-size: 0.94rem;
+            color: #5a5751;
+        }
+
+        .footer-note {
+            margin-top: 3.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #8a857e;
+            border-top: 1px solid #e0dbd3;
+            padding-top: 2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 3.5rem 1.5rem 3rem; }
+            .container { padding: 1.8rem 1.2rem 2.5rem; }
+            .faq-mini { grid-template-columns: 1fr; }
+            .card-grid { gap: 1.4rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.6rem; }
+            .card { padding: 1.6rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <section class="hero">
+        <h1>爱游戏 · 日常入口</h1>
+        <p>游戏不只是像素与数值，也是对话、探索和偶尔的放松。这里聚集着真实玩家和他们的兴趣角落。</p>
+        <span class="sub">从一个小众偏好到每天打开的习惯</span>
+    </section>
+
+    <!-- 内容区域 -->
+    <div class="container">
+
+        <!-- 信息卡片式：主视觉、用途、适合人群 -->
+        <div class="card-grid">
+            <div class="card">
+                <h3>主视觉 · 一处栖所</h3>
+                <p>没有花哨的启动界面，首页直接展示热门讨论与近期动向。你可以快速瞥见朋友在玩什么、哪些新内容正在被反复提起。页面保持干净，不堆信息，留给阅读的留白。</p>
+            </div>
+
+            <div class="card">
+                <h3>用途卡片 · 不止一种玩法</h3>
+                <ul>
+                    <li>翻看游戏日记与长评，找到适合周末沉浸的作品</li>
+                    <li>参与话题讨论，分享你的卡关或通关瞬间</li>
+                    <li>收藏感兴趣的游戏条目，建自己的待玩清单</li>
+                    <li>浏览玩家自制的攻略摘要与冷门技巧</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>适合人群</h3>
+                <ul>
+                    <li>喜欢慢慢玩游戏、不追热度的休闲玩家</li>
+                    <li>在找同类讨论氛围的「杂食」游戏爱好者</li>
+                    <li>对独立游戏、老游戏或特定类型有偏好的探索者</li>
+                    <li>偶尔写写短评、记录游玩感受的普通玩家</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 自然链接段落（嵌入句子） -->
+        <div class="link-paragraph">
+            <p>有时只是想找个地方随便聊聊游戏，看看别人怎么看待同一个关卡。在 <a href="https://i-gameweb.com.cn">爱游戏</a> 里，你能遇到各种角度的讨论——从像素风解谜到开放世界剧情，没有固定话题边界，全凭兴趣流动。不必担心跟不上进度，这里的节奏由你自己控制。</p>
+            <p>如果你已经有一个常去的游戏社区，也不妨把这里当作另一个安静的落脚点。许多玩家在这里同时关注着四五款风格迥异的游戏，偶尔还会因为一条评论而重新翻出多年前的存档。</p>
+        </div>
+
+        <!-- FAQ 摘要 / 提示 -->
+        <div class="faq-mini">
+            <div class="faq-item">
+                <h4>需要注册才能浏览吗？</h4>
+                <p>大部分内容对访客开放，可以随意阅读热门讨论和条目。回复、收藏或写评价则需要一个账号，注册流程很简单，没有强制绑定。</p>
+            </div>
+            <div class="faq-item">
+                <h4>内容偏向哪类游戏？</h4>
+                <p>没有严格分类限制。从 3A 大作到免费小游戏，从掌机经典到手机移植，只要有人认真讨论，就会出现。冷门游戏反而常常收获更细致的评价。</p>
+            </div>
+            <div class="faq-item">
+                <h4>有没有发帖或评论的规则？</h4>
+                <p>基本的友善与尊重。鼓励分享个人体验而非单纯搬运信息，反对引战、剧透不标记或恶意刷屏。详细指引在站点内说明页。</p>
+            </div>
+            <div class="faq-item">
+                <h4>适合一个人慢慢逛吗？</h4>
+                <p>完全适合。没有强制社交压力，你可以只看不写，或者隔几周再登录。站内搜索与标签系统能够帮你定位感兴趣的内容。</p>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>一个为游戏闲聊与记录而存在的角落。如果你也喜欢不慌不忙地玩游戏，或许可以试试 <a href="https://i-gameweb.com.cn">爱游戏</a> 的节奏。</p>
+        </div>
+    </div>
+
+</body>
+</html>

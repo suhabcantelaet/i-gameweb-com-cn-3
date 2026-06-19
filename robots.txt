@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://suhabcantelaet.github.io/i-gameweb-com-cn-3/sitemap.xml
