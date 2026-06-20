@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>优直播 · 清晰流畅 · 专业直播引擎</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9fc;
+      color: #1d2d3a;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: #0f7b8c;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    a:hover { color: #064c5a; text-decoration: underline; }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero 区 */
+    .hero {
+      padding: 80px 0 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(145deg, #e2f3f7 0%, #ccecf2 100%);
+      border-radius: 0 0 48px 48px;
+      margin-bottom: 32px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      color: #074f5e;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #0f7b8c, #1aa3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      max-width: 700px;
+      font-size: 1.15rem;
+      color: #1d4e5a;
+      margin-bottom: 28px;
+      padding: 0 4px;
+    }
+    .hero .tagline {
+      display: inline-block;
+      background: rgba(15, 123, 140, 0.08);
+      backdrop-filter: blur(2px);
+      padding: 8px 20px;
+      border-radius: 40px;
+      border: 1px solid rgba(15, 123, 140, 0.2);
+      font-size: 0.95rem;
+      color: #075c6b;
+      margin-bottom: 10px;
+    }
+
+    /* 网格卡片区 */
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin: 48px 0 24px;
+      color: #0a3b44;
+      letter-spacing: -0.01em;
+      border-left: 6px solid #1aa3b8;
+      padding-left: 16px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px 20px 24px;
+      box-shadow: 0 4px 12px rgba(0, 30, 40, 0.04), 0 1px 3px rgba(0,0,0,0.02);
+      transition: transform 0.2s, box-shadow 0.25s;
+      border: 1px solid #e9f2f5;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(7, 95, 108, 0.07);
+      border-color: #b8dbe3;
+    }
+    .card .icon {
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 12px;
+      display: block;
+      color: #0f7b8c;
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #083942;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #2d4f5a;
+    }
+
+    /* 说明区 — 双栏布局 */
+    .info-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin: 40px 0 20px;
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      border-radius: 36px;
+      padding: 40px 36px;
+      box-shadow: 0 6px 14px rgba(0, 40, 50, 0.04);
+      border: 1px solid #d7eaf0;
+    }
+    .info-left {
+      flex: 2 1 280px;
+    }
+    .info-left h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #074f5e;
+      margin-bottom: 16px;
+    }
+    .info-left p {
+      font-size: 1rem;
+      color: #1b4652;
+      margin-bottom: 14px;
+    }
+    .info-left p a {
+      font-weight: 600;
+    }
+    .info-right {
+      flex: 1.5 1 200px;
+      background: #edf7fa;
+      border-radius: 24px;
+      padding: 24px 22px;
+    }
+    .info-right h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #07434f;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .info-right ul {
+      list-style: none;
+      padding: 0;
+    }
+    .info-right li {
+      padding: 8px 0;
+      border-bottom: 1px solid #cde2e9;
+      font-size: 0.95rem;
+      color: #1a3f49;
+      display: flex;
+      gap: 8px;
+    }
+    .info-right li:last-child { border-bottom: none; }
+    .info-right li::before {
+      content: "▹";
+      color: #1aa3b8;
+      font-weight: 600;
+    }
+
+    /* FAQ 摘要 — 紧凑折叠感 */
+    .faq-summary {
+      margin: 44px 0 20px;
+      padding: 8px 0 16px;
+    }
+    .faq-summary h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #0f4b57;
+      margin-bottom: 20px;
+    }
+    .faq-item {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 16px 24px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      border: 1px solid #ddeff3;
+      transition: border 0.15s;
+    }
+    .faq-item:hover {
+      border-color: #9ccad4;
+    }
+    .faq-item strong {
+      display: block;
+      font-size: 1.03rem;
+      font-weight: 600;
+      color: #0a4450;
+      margin-bottom: 4px;
+    }
+    .faq-item p {
+      font-size: 0.95rem;
+      color: #2d505c;
+      margin: 0;
+    }
+
+    /* 底部链接 */
+    .footer-links {
+      margin: 50px 0 30px;
+      padding: 28px 0;
+      border-top: 1px solid #cde0e6;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-links .brand {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #08434f;
+    }
+    .footer-links .brand a {
+      color: #0f7b8c;
+    }
+    .footer-links .meta {
+      font-size: 0.9rem;
+      color: #426a76;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 680px) {
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 60px 0 40px; }
+      .info-area { padding: 28px 20px; flex-direction: column; }
+      .section-title { font-size: 1.35rem; }
+      .card-grid { gap: 16px; }
+      .card { padding: 20px 16px; }
+      .footer-links { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 420px) {
+      .hero h1 { font-size: 1.7rem; }
+      .container { padding: 0 16px; }
+      .faq-item { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Hero 区 -->
+    <header class="hero">
+      <div class="tagline">📡 低延迟 · 全场景 · 稳定可靠</div>
+      <h1>让每一场<span>直播</span>都更有品质</h1>
+      <p>从专业推流到极速播放，<a href="https://ds-yoozhibo.com">优直播</a>为创作者、企业、教育机构提供端到端的流媒体基础能力，无需自建底层，即可获得广电级传输体验。</p>
+    </header>
+
+    <!-- 优势区 — 网格卡片 -->
+    <h2 class="section-title">核心能力</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="icon">⚡</span>
+        <h3>智能多网聚合</h3>
+        <p>自动融合 Wi‑Fi / 4G / 5G 链路，弱网环境下依旧平滑推流，丢帧率降低 70%。</p>
+      </div>
+      <div class="card">
+        <span class="icon">🖥️</span>
+        <h3>全终端适配</h3>
+        <p>Web / 小程序 / 原生 App 统一 SDK，一次接入覆盖桌面与移动端观众。</p>
+      </div>
+      <div class="card">
+        <span class="icon">🔒</span>
+        <h3>加密与鉴权</h3>
+        <p>HLS 与 WebRTC 全链路加密，支持 referer / token / 时间戳防盗链。</p>
+      </div>
+      <div class="card">
+        <span class="icon">📊</span>
+        <h3>实时质量监控</h3>
+        <p>端到端延迟、卡顿率、推流码率看板，辅助运维快速定位异常。</p>
+      </div>
+    </div>
+
+    <!-- 说明区 + 场景侧栏 -->
+    <div class="info-area">
+      <div class="info-left">
+        <h2>不止于推拉流</h2>
+        <p>优直播提供从采集、转码、录制到分发的完整管道，支持 RTMP / SRT / HLS / WebRTC 等主流协议。开发者可通过 RESTful API 与 Webhook 灵活集成，将直播能力嵌入自有平台。</p>
+        <p>适用于在线教育、电商带货、活动转播、远程医疗等对延迟与稳定性有明确要求的场景。目前已有超过 3000 家团队通过 <a href="https://ds-yoozhibo.com">优直播</a> 搭建专属直播基础设施。</p>
+      </div>
+      <div class="info-right">
+        <h4>📌 典型应用场景</h4>
+        <ul>
+          <li>企业内训 &amp; 年会 · 万人并发不卡顿</li>
+          <li>电商直播 · 低延迟互动抢购</li>
+          <li>在线课堂 · 白板 + 屏幕共享融合</li>
+          <li>体育赛事 · 多机位导播切换</li>
+          <li>医疗手术示教 · 高画质加密传输</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+      <h2>常见问题 · 快速了解</h2>
+      <div class="faq-item">
+        <strong>接入优直播需要自备服务器吗？</strong>
+        <p>不需要。您只需注册后获取推流地址 / SDK 即可开始，转码、录制、分发均由平台处理。</p>
+      </div>
+      <div class="faq-item">
+        <strong>支持录制回放与即时剪辑吗？</strong>
+        <p>支持云端录制 (MP4 / FLV)，并提供按时间点回放、快速生成精彩片段的能力。</p>
+      </div>
+      <div class="faq-item">
+        <strong>延迟能做到多低？</strong>
+        <p>通过 WebRTC 推拉流端到端延迟可控制在 500ms 以内，适合连麦、问答等实时交互。</p>
+      </div>
+      <div class="faq-item">
+        <strong>是否有免费试用额度？</strong>
+        <p>新用户赠送 50 GB 流量及 100 小时录制时长，便于充分验证产品效果。</p>
+      </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <footer class="footer-links">
+      <div class="brand">
+        <a href="https://ds-yoozhibo.com">优直播</a> <span style="font-weight:400; color:#466f7a;">· 直播基础设施服务</span>
+      </div>
+      <div class="meta">
+        <span>© 2025 · 简洁 · 专业 · 可靠</span>
+      </div>
+    </footer>
+
+  </div>
+  <!-- page seed variant: a3f6f5942366bb45 -->
+</body>
+</html>
